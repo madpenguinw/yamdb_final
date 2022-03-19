@@ -22,7 +22,7 @@ jobs:
     - name: Test with flake8 and django tests
       run: |
         python -m flake8
-        # pytest
+        pytest
 
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
@@ -42,7 +42,7 @@ jobs:
         uses: docker/build-push-action@v2 
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
+          tags: penguinw/infra_sp2:latest
           context: api_yamdb
           file: api_yamdb/Dockerfile
 
@@ -56,6 +56,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo docker-compose stop
             sudo docker-compose rm web
