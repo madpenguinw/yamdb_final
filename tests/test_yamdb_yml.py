@@ -43,8 +43,8 @@ class TestWorkflow:
                 'on: push' in yamdb
         ), f'Проверьте, что добавили действие при пуше в файл {filename}'
         assert 'pytest' in yamdb, f'Проверьте, что добавили pytest в файл {filename}'
-        assert 'appleboy/ssh-action' in yamdb, f'Проверьте, что добавили деплой в файл {filename}'
-        assert 'appleboy/telegram-action' in yamdb, (
+        assert 'penguinw/ssh-action' in yamdb, f'Проверьте, что добавили деплой в файл {filename}'
+        assert 'penguinw/telegram-action' in yamdb, (
             'Проверьте, что настроили отправку telegram сообщения '
             f'в файл {filename}'
         )
