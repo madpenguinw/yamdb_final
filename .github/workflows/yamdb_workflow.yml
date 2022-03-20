@@ -42,13 +42,13 @@ jobs:
         uses: docker/build-push-action@v2 
         with:
           push: true
-          tags: penguinw/infra_sp2:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
           context: api_yamdb
-          file: api_yamdb/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
@@ -58,6 +58,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
