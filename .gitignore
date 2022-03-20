@@ -145,10 +145,10 @@ dmypy.json
 
 .mypy_cache
 
-# папки со статикой и медиа
-static/
-posts/static/
-media/
+# # папки со статикой и медиа
+# static/
+# posts/static/
+# media/
 
 # база данных
 fixtures.json
