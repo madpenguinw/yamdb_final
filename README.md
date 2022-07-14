@@ -125,7 +125,7 @@ SSH_KEY=<ваш SSH ключ (для получения команда: cat ~/.s
 
 TELEGRAM_TO=<ID чата, в который придет сообщение>
 TELEGRAM_TOKEN=<токен вашего бота>
-    ```
+```
 Workflow состоит из четырёх шагов:
 1) Проверка кода на соответствие PEP8
 2) Сборка и публикация образа бекенда на DockerHub.
@@ -136,7 +136,7 @@ Workflow состоит из четырёх шагов:
 ```
 sudo docker-compose up -d --build
 ```
-* После успешной сборки на сервере выполните команды:
+- После успешной сборки на сервере выполните команды:
 ```
 sudo docker-compose exec backend python manage.py collectstatic --noinput
 sudo docker-compose exec backend python manage.py migrate --noinput
